@@ -1,0 +1,417 @@
+bool? marvel= null;
+bool? spider = null;
+bool? transformers = null;
+int seat = 0, seat2 = 0, seat3 = 0, pin = 4545, price1 = 250, price2 = 300, price3 = 350;
+while (true)
+{
+    /*Saat yerleştirme*/
+    DateTime now = DateTime.Now;
+    Console.SetCursorPosition(95,29);
+    Console.WriteLine($"/Sistem Saati:{now:hh:mm:ss}\\");
+    /*Bilet sırası belirleme*/
+    if (marvel == true)
+    {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(80, 1);
+        Console.WriteLine("-- Kaptan marvel,Koltuk numarası = {0} --",seat);
+    }
+        if(spider == true && marvel == null)
+        {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(83, 1);
+            Console.WriteLine("-- Spider man,Koltuk numarası = {0} --",seat2);
+        }
+        if(spider == true && marvel == true)
+    {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(83, 2);
+        Console.WriteLine("-- Spider man,Koltuk numarası = {0} --", seat2);
+    }
+    if (transformers == true && marvel == null && spider == null)
+    {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(81, 1);
+        Console.WriteLine("-- Transformers,Koltuk numarası = {0} --",seat3);
+    }
+    if (transformers == true && marvel == true && spider == null)
+    {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(81, 2);
+        Console.WriteLine("-- Transformers,Koltuk numarası = {0} --", seat3);
+    }
+    if (transformers == true && marvel == true && spider == true)
+    {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(81, 3);
+        Console.WriteLine("-- Transformers,Koltuk numarası = {0} --", seat3);
+    }
+    if (transformers == true && marvel == null && spider == true)
+    {
+        Console.SetCursorPosition(100, 0);
+        Console.WriteLine("Biletlerim\n");
+        Console.SetCursorPosition(81, 2);
+        Console.WriteLine("-- Transformers,Koltuk numarası = {0} --", seat3);
+    }
+    Console.SetCursorPosition(32, 0);
+    Console.Write("================================================");
+
+    for (int i = 0; i < 6; i++)
+    {
+        Console.SetCursorPosition(32, i);
+        Console.WriteLine("|");
+    }
+    for (int i = 0; i < 6; i++)
+    {
+        Console.SetCursorPosition(80, i);
+        Console.WriteLine("|");
+    }
+    Console.SetCursorPosition(33, 5);
+    Console.Write("===============================================");
+    Console.SetCursorPosition(50, 1);
+    Console.WriteLine("1.Bilet al");
+    Console.SetCursorPosition(48, 2);
+    Console.WriteLine("2.Bilet iptali");
+    Console.SetCursorPosition(38, 3);
+    Console.WriteLine("3.Fiyatı Değiştir(Sadece Yöneticiler)");
+    /*menü seçim switch*/
+    int choose = Convert.ToInt32(Console.ReadLine());
+    switch(choose)
+    {
+        case 1:
+            for (int i = 5; i < 10; i++)
+            {
+                Console.SetCursorPosition(32, i);
+                Console.WriteLine("|");
+            }
+            for (int i = 5; i < 10; i++)
+            {
+                Console.SetCursorPosition(80, i);
+                Console.WriteLine("|");
+            }
+            Console.SetCursorPosition(32, 10);
+            Console.Write("=================================================");
+            Console.SetCursorPosition(50, 6);
+            Console.WriteLine("1.Kaptan Marvel");
+            Console.SetCursorPosition(50, 7);
+            Console.WriteLine("2.Spider Man");
+            Console.SetCursorPosition(50, 8);
+            Console.WriteLine("3.Transformers");
+            Console.SetCursorPosition(50,9);
+            Console.WriteLine("4.Vazgeç");
+                int films = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+            /*Film seçim switch*/
+            switch (films)
+            {
+                case 1:
+                    /*bilet kontrol*/
+                    if(marvel == true)
+                    {
+                        Console.WriteLine("**********ZATEN BİR BİLETİNİZ VAR**********");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                    }
+                    Console.WriteLine("Biletin fiyatı {0} TL,almak isterseniz ENTER'a basınız\n",price1);
+                    var input = Console.ReadKey(true);
+                    if (input.Key == ConsoleKey.Enter)
+                    {
+                        /*koltuk oluşturma*/
+                        for (int a = 1; a <= 10; a++)
+                        {
+                            Console.Write("  " + a + " ");
+                        }
+                        Console.WriteLine("\n");
+                        for (int b = 11; b <= 20; b++)
+                        {
+                            Console.Write(" " + b + " ");
+                        }
+                        Console.WriteLine("\n");
+                        for (int c = 21; c <= 30; c++)
+                        {
+                            Console.Write(" " + c + " ");
+                        }
+                        Console.Write("\n\nKoltuk seçin = ");
+                        seat = Convert.ToInt32(Console.ReadLine());
+                        /*input kontrol*/
+                        while(seat < 1 || seat > 30)
+                        {
+                            Console.Write("\n1 ile 30 arasında bir sayı seçin = ");
+                            seat = Convert.ToInt32(Console.ReadLine());
+                        }
+                        int wait;
+                        Console.SetCursorPosition(0,25);
+                        /*ilerleme çubuğu*/
+                        for (wait = 0; wait <= 125000; wait++)
+                        {
+                            Console.Write("\r****** Progress = {0} ******", wait / 1250);
+                        }
+                        Console.WriteLine("");
+                        Console.WriteLine("Biletiniz başarıyla alınmıştır\n");
+                        marvel = true;
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Ana menüye dönmek için bir tuşa basınız\n");
+                        Console.ReadKey(true);
+                        Console.Clear();
+                    }
+                    break;
+                case 2:
+                    if (spider == true)
+                    {
+                        Console.WriteLine("**********ZATEN BİR BİLETİNİZ VAR**********");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                    }
+                    Console.WriteLine("Biletin fiyatı {0} TL,almak için ENTER'a basınız\n",price2);
+                    var input2 = Console.ReadKey(true);
+                    if (input2.Key == ConsoleKey.Enter)
+                    {
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            Console.Write("  " + i + " ");
+                        }
+                        Console.WriteLine("\n");
+                        for (int a = 11; a <= 20; a++)
+                        {
+                            Console.Write(" " + a + " ");
+                        }
+                        Console.WriteLine("\n");
+                        for (int c = 21; c <= 30; c++)
+                        {
+                            Console.Write(" " + c + " ");
+                        }
+                        Console.Write("\n\nKoltuk seçin = ");
+                         seat2 = Convert.ToInt32(Console.ReadLine());
+                        while(seat2 < 1 || seat2 > 30)
+                        {
+                            Console.Write("\n1 ile 30 arasında bir sayı seçin = ");
+                            seat2 = Convert.ToInt32(Console.ReadLine());
+                        }
+                        int wait;
+                        Console.SetCursorPosition(0, 25);
+                        for (wait = 0; wait <= 125000; wait++)
+                        {
+                            Console.Write("\r****** Progress = {0} ******", wait / 1250);
+                        }
+                        Console.WriteLine("");
+                        Console.WriteLine("Biletiniz başarıyla alınmıştır\n");
+                        spider = true;
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Ana menüye dönmek için bir tuşa basınız\n");
+                        Console.ReadKey(true);
+                        Console.Clear();
+
+                    }
+                    break;
+                case 3:
+                    if (transformers == true)
+                    {
+                        Console.WriteLine("**********ZATEN BİR BİLETİNİZ VAR**********");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
+                    }
+                    Console.WriteLine("Biletin fiyatı {0} TL,almak için ENTER'a basınız\n",price3);
+                    var input3 = Console.ReadKey(true);
+                    if (input3.Key == ConsoleKey.Enter)
+                    {
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            Console.Write("  " + i + " ");
+                        }
+                        Console.WriteLine("\n");
+                        for (int a = 11; a <= 20; a++)
+                        {
+                            Console.Write(" " + a + " ");
+                        }
+                        Console.WriteLine("\n");
+                        for (int c = 21; c <= 30; c++)
+                        {
+                            Console.Write(" " + c + " ");
+                        }
+                        Console.Write("\n\nKoltuk seçin = ");
+                        seat3 = Convert.ToInt32(Console.ReadLine());
+                        while(seat3 < 1 || seat3 > 30)
+                        {
+                            Console.Write("\n1 ile 30 arasında bir sayı seçin = ");
+                            seat3 = Convert.ToInt32(Console.ReadLine());
+                        }
+                        int wait;
+                        Console.SetCursorPosition(0, 25);
+                        for (wait = 0; wait <= 125000; wait++)
+                        {
+                            Console.Write("\r****** Progress = {0} ******",wait/1250);
+                        }
+                        Console.WriteLine("");
+                        Console.WriteLine("Biletiniz başarıyla alınmıştır\n");
+                        transformers = true;
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Ana menüye dönmek için bir tuşa basınız\n");
+                        Console.ReadKey(true);
+                        Console.Clear();
+                    }
+                    break;
+                case 4:
+                    Thread.Sleep(600);
+                    break;
+            }
+            break;
+        case 2:
+            Console.Clear();
+            for (int i = 5; i < 12; i++)
+            {
+                Console.SetCursorPosition(32, i);
+                Console.WriteLine("|");
+            }
+            for (int i = 5; i < 12; i++)
+            {
+                Console.SetCursorPosition(80, i);
+                Console.WriteLine("|");
+            }
+            Console.SetCursorPosition(32, 12);
+            Console.Write("=================================================");
+            Console.SetCursorPosition(39, 6);
+            Console.WriteLine("Iptal etmek istediğiniz bileti seçin\n");
+            Console.SetCursorPosition(50, 8);
+            Console.WriteLine("1.Kaptan Marvel");
+            Console.SetCursorPosition(50, 9);
+            Console.WriteLine("2.Spiderman");
+            Console.SetCursorPosition(50, 10);
+            Console.WriteLine("3.Transformers");
+            int choose2 = Convert.ToInt32(Console.ReadLine());
+            while(choose2 < 1 || choose2 > 3)
+            {
+                Console.WriteLine("Sadece ekrandaki sayıları seçebilirsiniz");
+                Thread.Sleep(1000);
+                choose2 = Convert.ToInt32((Console.ReadLine()));
+            }
+            if(choose2 == 1)
+            {
+                /*bilet alma kontrolü*/
+                if(marvel == null)
+                {
+                    Console.SetCursorPosition(46, 13);
+                    Console.WriteLine("/*Bilet zaten alınmamış*\\\n");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Başka film seçmek için 1'e,menüye dönmek için herhangi bir tuşa basınız\n");
+                 
+                    var ch = Console.ReadKey(true);
+                    if(ch.Key == ConsoleKey.D1)
+                    {
+                        Console.Clear();
+                        goto case 2;
+                    }
+                    Console.Clear();
+                    break;
+                
+                }
+                marvel = null;
+            }
+            if(choose2 == 2)
+            {
+                if (spider == null)
+                {
+                    Console.SetCursorPosition(46, 13);
+                    Console.WriteLine("/*Bilet zaten alınmamış*\\\n");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Faşka film seçmek için 1'e,menüye dönmek için herhangi bir tuşa basınız\n");
+
+                    var ch = Console.ReadKey(true);
+                    if (ch.Key == ConsoleKey.D1)
+                    {
+                        goto case 2;
+                    }
+                    Console.Clear();
+                    break;
+
+                }
+                spider = null;
+            }
+            if (choose2 == 3)
+            {
+                if (transformers == null)
+                {
+                    Console.SetCursorPosition(46, 13);
+                    Console.WriteLine("/*Bilet zaten alınmamış*\\\n");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Faşka film seçmek için 1'e,menüye dönmek için herhangi bir tuşa basınız\n");
+
+                    var ch = Console.ReadKey(true);
+                    if (ch.Key == ConsoleKey.D1)
+                    {
+                        goto case 2;
+                    }
+                    Console.Clear();
+                    break;
+
+                }
+                transformers = null;
+            }
+            Console.SetCursorPosition(43, 13);
+            Console.WriteLine("İptal işlemi başarıyla gerçekleşti\n");
+            Console.SetCursorPosition(48, 14);
+            Console.WriteLine("Ana menüye dönüyorsunuz");
+            Thread.Sleep(1800);
+            Console.Clear();
+            break;
+        case 3:
+            Console.Clear();
+            Console.Write("Yönetici PİN veya CBU kuruluş yılını giriniz : ");
+            var attempt = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("");
+            /*şifre kontrol*/
+            if(attempt != pin && attempt != 1992)
+            {
+                Console.WriteLine("---ŞİFRE YANLIŞ---\n");
+                break;
+            }
+            Console.Clear();
+            Console.WriteLine("1.Kaptan Marvel\n");
+            Console.WriteLine("2.Spider man\n");
+            Console.WriteLine("3.Transformers\n");
+            var input4 = Console.ReadKey(true);
+            /*input kontrol*/
+            if(input4.Key == ConsoleKey.D1) 
+            {
+                Console.Clear(); 
+                Console.Write("Yeni fiyatı giriniz : ");
+                int yeni = Convert.ToInt32(Console.ReadLine());
+                price1 = yeni;
+                Console.WriteLine("Yeni fiyat başarıyla uygulandı,Ana menüye yönlendiriliyorsunuz.\n");
+                Thread.Sleep(1500);
+                Console.Clear();
+                break;
+            }
+            if (input4.Key == ConsoleKey.D2)
+            {
+                Console.Clear(); 
+                Console.Write("Yeni fiyatı giriniz : ");
+                int yeni = Convert.ToInt32(Console.ReadLine());
+                price2 = yeni;
+                Console.WriteLine("Yeni fiyat başarıyla uygulandı,Ana menüye yönlendiriliyorsunuz.\n");
+                Thread.Sleep(1500);
+                Console.Clear();
+                break;
+            }
+            if (input4.Key == ConsoleKey.D3)
+            {
+                Console.Clear(); 
+                Console.Write("Yeni fiyatı giriniz : ");
+                int yeni = Convert.ToInt32(Console.ReadLine());
+                price3 = yeni;
+                Console.WriteLine("Yeni fiyat başarıyla uygulandı,Ana menüye yönlendiriliyorsunuz.\n");
+                Thread.Sleep(1500);
+                Console.Clear();
+                break;
+            }
+            break;
+    }
+    
+}
